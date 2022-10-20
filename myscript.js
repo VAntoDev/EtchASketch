@@ -25,8 +25,6 @@ function gridChange(){
         alert("The number must be between 1 and 100 ")
     } else {
     
-       
-    //inserire qui metodo rimozione gruppo di child
     removeAllSquares();
 
     squaresCreate(gridSize)
@@ -49,19 +47,13 @@ for(i = 0; i < gridSize**2; i++){
 //Makes the cells turn green when the mouse is over them
 let squares = document.getElementsByClassName("square");
 
-gridCreate();
-
-squaresCreate(gridSize);
-
-colorSquares();
-
 
 function colorSquares(){
     for (let i = 0 ; i < squares.length; i++) {
         squares[i].addEventListener("mouseover", colorBackground, false);
         function colorBackground()
         {  
-            squares[i].setAttribute("style", "background-color:green;");
+            squares[i].setAttribute("style", "background-color:black;");
         }
     }
 }
@@ -74,5 +66,8 @@ function removeAllSquares(){
     }
 }
 
+gridCreate();
 
+squaresCreate(gridSize);
 
+colorSquares();
