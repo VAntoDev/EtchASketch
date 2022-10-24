@@ -10,6 +10,31 @@ square.setAttribute('class', 'square');
 const btn = document.querySelector("button");
 btn.addEventListener("click", gridChange, false);
 
+const blackBtn = document.querySelector("#black");
+blackBtn.addEventListener("click", selectedColorBlack, false);
+
+const eraserBtn = document.querySelector("#eraser");
+eraserBtn.addEventListener("click", selectedColorEraser, false);
+
+const rainbowBtn = document.querySelector("#rainbow");
+rainbowBtn.addEventListener("click", selectedColorRainbow, false);
+
+
+function selectedColorBlack(){
+    selectedColor = 1;
+    colorSquares();
+}
+
+function selectedColorEraser(){
+    selectedColor = 2;
+    colorSquares();
+}
+
+function selectedColorRainbow(){
+    selectedColor = 3;
+    colorSquares();
+}
+
 //Determines the size of the grid
 let gridSize = 10;
 
@@ -21,7 +46,7 @@ function gridCreate(){
 
 function gridChange(){
     gridSize = prompt("Change the grid size, choose a number between 1 and 100");
-    if(gridSize > 100 || gridSize <= 0){
+    if(gridSize > 100 || gridSize <= 0 || isNaN(gridSize)){
         alert("The number must be between 1 and 100 ")
     } else {
     
@@ -47,13 +72,35 @@ for(i = 0; i < gridSize**2; i++){
 //Makes the cells turn green when the mouse is over them
 let squares = document.getElementsByClassName("square");
 
+selectedColor = 1;
+
+rainbowColorsArray = ["#fbf8cc", "#fde4cf", "#ffcfd2", "#f1c0e8", "#cfbaf0", "#a3c4f3", "#90dbf4", "#8eecf5", "#98f5e1", "#b9fbc0"];
+rainbowColorNow = 0;
 
 function colorSquares(){
     for (let i = 0 ; i < squares.length; i++) {
-        squares[i].addEventListener("mouseover", colorBackground, false);
-        function colorBackground()
+        if(selectedColor === 1){
+        squares[i].addEventListener("mouseover", colorBackgroundBlack, false);
+        function colorBackgroundBlack()
         {  
             squares[i].setAttribute("style", "background-color:black;");
+        }
+        } else if (selectedColor === 2){
+            squares[i].addEventListener("mouseover", colorBackgroundWhite, false);
+            function colorBackgroundWhite()
+            {  
+                squares[i].setAttribute("style", "background-color:white;");
+            }
+        } else if (selectedColor === 3){
+            squares[i].addEventListener("mouseover", colorBackgroundRainbow, false);
+            function colorBackgroundRainbow()
+            {  
+                squares[i].setAttribute("style", `background-color:${rainbowColorsArray[rainbowColorNow]};`);
+                rainbowColorNow++;
+                if(rainbowColorNow > rainbowColorsArray.length - 1){
+                    rainbowColorNow = 0;
+                }
+            }
         }
     }
 }
