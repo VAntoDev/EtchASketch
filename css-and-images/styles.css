@@ -1,3 +1,4 @@
+/* Elements */
 body {
     background: #6FCF97;
 }
@@ -21,10 +22,21 @@ button:active{
   box-shadow: none;
 }
 
-.colors{
-    height: 100%;
+a {
+    color:blue;
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    margin-top: auto;
+    font-size: 20px;
+    font-family: 'Inika', serif;
+}
+
+/* ID's */
 #main-container{
     display: flex;
     flex-direction: column;
@@ -104,7 +116,12 @@ button:active{
     height: 500px;
 }
 
+/* Classes */
 .square {
     background-color: white;
     flex: 1 1 auto;
+}
+
+.colors{
+    height: 100%;
 }
